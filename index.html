@@ -1,26 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo List</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>Todo List</h1>
-      <form id="todo-form">
-        <input
-          type="text"
-          placeholder="Add Todo"
-          id="todo-input"
-          autocomplete="off"
-        />
-        <button type="submit" id="add-btn">Add</button>
-      </form>
-      <ul id="todo-list"></ul>
-    </div>
+<html>
 
-    <script src="app.js"></script>
-  </body>
+<head>
+  <title>Todo List</title>
+  <link rel="shortcut icon" href="images.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="accordion.css">
+  <link rel="stylesheet" href="add.css">
+  <link rel="stylesheet" href="download.css">
+  <link rel="stylesheet" href="input.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <div class="d-flex flex-column justify-content-center w-100 h-100"></div>
+  <div class="main-container">
+    <div class="container1">
+      <h1>Todo List App <img src="images.png"></h1>
+      <!-- <input type="text" id="todo-input" placeholder="Add new todo"> -->
+      <div class="main-add">
+        <div class="group">
+          <input required="" type="text" id="todo-input" class="input">
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Add new todo</label>
+        </div>
+        <!-- <button id="add-btn" onclick="addTodo()">Add</button> -->
+        <button type="button" id="add-btn" onclick="addTodo()" class="button-add">
+          <span class="button__text">Add</span>
+          <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24"
+              stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24"
+              fill="none" class="svg">
+              <line y2="19" y1="5" x2="12" x1="12"></line>
+              <line y2="12" y1="12" x2="19" x1="5"></line>
+            </svg></span>
+        </button>
+      </div>
+      <ul id="todo-list"></ul>
+      <!-- <button id="download-btn" onclick="downloadTodo()"><i class="fa fa-download"></i> Download All</button> -->
+      <button class="button" id="download-btn" onclick="downloadTodo()">
+        <span class="button_lg">
+          <span class="button_sl"></span>
+          <span class="button_text">Download Now</span>
+        </span>
+      </button>
+      <div>
+        <details close>
+          <summary>
+            About
+          </summary>
+          <div class="paragraph">
+            You can manage your daily to-do lists with the help of This Todo List App, an effective web-based tool.
+            This app offers a variety of functions that help in efficient handling of tasks. When tasks are finished,
+            you can quickly remove them. <br>
+            One of the standout features of the Todo List App is the ability to download all tasks as a .txt file.
+          </div>
+        </details>
+      </div>
+    </div>
+    <div id="alert" style="display: none;">
+      <div id="alert-message">File downloaded successfully!</div>
+      <div id="progress-bar"></div>
+      <button id="close-btn">&times;</button>
+    </div>
+  </div>
+  <script src="app.js"></script>
+  <script src="alert.js"></script>
+</body>
+
 </html>

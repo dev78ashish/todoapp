@@ -1,82 +1,180 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap');
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #d8c6c6f6;
+}
+
+body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
+
+  50% {
+    background-position: 100% 50%;
   }
-  
-  .container {
-    max-width: 600px;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+
+  100% {
+    background-position: 0% 50%;
   }
-  
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
+}
+
+.container1 {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 2px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  /* text-align: center; */
+  font-size: 36px;
+  display: flex;
+  font-family: 'Josefin Sans', sans-serif;
+  align-items: center;
+}
+
+h1 img {
+  height: 55px;
+  width: 55px;
+}
+
+.main-add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* input[type="text"] {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="text"]:focus {
+  border-color: blue;
+} */
+
+.remove-btn {
+  background-color: DodgerBlue;
+  color: #fff;
+  padding: 14px 20px;
+  font-family: 'Lora', serif;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-btn {
+  background-color: rgb(10, 93, 177);
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+li:hover {
+  background-color: #f1f1f1;
+}
+
+/* #download-btn{
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+#download-btn:hover {
+  background-color: RoyalBlue;
+} */
+
+@media screen and (max-width: 700px) {
+  .main-container {
+    min-width: 90%;
   }
-  
-  form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  input[type="text"] {
-    width: 70%;
+}
+
+#alert {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #626963;
+  padding: 15px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#alert-message {
+  flex-grow: 1;
+  color: white;
+  font-size: 20px;
+}
+
+#progress-bar {
+  height: 5px;
+  background-color: white;
+  width: 0%;
+  transition: width 3s;
+}
+
+#close-btn {
+  font-size: 20px;
+  color: white;
+  background-color: transparent;
+  border: 2px solid black;
+  cursor: pointer;
+
+}
+
+/* Adjust styles for mobile screens */
+@media only screen and (max-width: 600px) {
+  #alert {
+    font-size: 16px;
     padding: 10px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
+  }
+
+  #alert-message {
     font-size: 16px;
   }
-  
-  button[type="submit"] {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    margin-left: 10px;
-    cursor: pointer;
+
+  #progress-bar {
+    height: 3px;
+  }
+
+  #close-btn {
     font-size: 16px;
   }
-  
-  ul {
-    list-style: none;
-  }
-  
-  li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #f7f7f7;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-  }
-  
-  li span {
-    flex-grow: 1;
-    margin-right: 10px;
-  }
-  
-  li button {
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
+}
+
+/* #add-btn{
+  font-family: 'Lora', serif;
+} */

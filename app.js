@@ -1,69 +1,50 @@
-const todoForm = document.getElementById("todo-form");
-const todoInput = document.getElementById("todo-input");
-const todoList = document.getElementById("todo-list");
-
-// array to store todos
 let todos = [];
 
-// function to add todo to the array and render on the screen
 function addTodo() {
-  event.preventDefault();
-  if (todoInput.value === "") {
-    return;
+  const input = document.getElementById("todo-input");
+  const value = input.value.trim();
+
+  if (value !== "") {
+    todos.push(value);
+    input.value = "";
+    displayTodos();
   }
-
-  const todo = {
-    id: Date.now(),
-    text: todoInput.value,
-    completed: false
-  };
-
-  todos.push(todo);
-  renderTodos();
-  todoInput.value = "";
 }
 
-// function to render all the todos in the array
-function renderTodos() {
-  todoList.innerHTML = "";
-  todos.forEach(todo => {
+function displayTodos() {
+  const list = document.getElementById("todo-list");
+  list.innerHTML = "";
+
+  todos.forEach((todo, index) => { // Pass index as an argument
     const li = document.createElement("li");
-    li.innerHTML = `
-      <span>${todo.text}</span>
-      <button class="delete-btn">Delete</button>
-    `;
-    li.dataset.id = todo.id;
-    if (todo.completed) {
-      li.classList.add("completed");
-    }
-    todoList.appendChild(li);
+    li.textContent = todo;
+    list.appendChild(li);
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remove";
+    removeBtn.classList.add("remove-btn"); 
+    removeBtn.style.backgroundColor = "red";
+    removeBtn.onclick = () => removeTodoAtIndex(index); // Pass index to removeTodoAtIndex
+    li.appendChild(removeBtn);
+
   });
 }
 
-// function to mark a todo as completed or not completed
-function toggleCompleted(id) {
-  const index = todos.findIndex(todo => todo.id == id);
-  todos[index].completed = !todos[index].completed;
-  renderTodos();
+function removeTodoAtIndex(index) {
+  todos.splice(index, 1);
+  displayTodos();
 }
 
-// function to delete a todo from the array and the screen
-function deleteTodo(id) {
-  todos = todos.filter(todo => todo.id != id);
-  renderTodos();
+function downloadTodo() {
+  const mainLine = "Here is the list of your ToDo's:\n"
+  const defaultLines = "\n\n\n\n\n\n\n\n\n*****Thank you for using******\n***Designed & developed by***\n*******Devashish Prasad*******";
+  const data = mainLine + todos.join("\n") + defaultLines;
+  const blob = new Blob([data], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "todos.txt";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
-
-// event listeners
-todoForm.addEventListener("submit", addTodo);
-todoList.addEventListener("click", event => {
-  if (event.target.tagName === "SPAN") {
-    const id = event.target.parentNode.dataset.id;
-    toggleCompleted(id);
-  } else if (event.target.classList.contains("delete-btn")) {
-    const id = event.target.parentNode.dataset.id;
-    deleteTodo(id);
-  }
-});
-
-// render initial todos
-renderTodos();
